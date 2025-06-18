@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cache_file="/etc/nepali-date/today_date.txt"
+today=$(date +%F)
+
+# If cache doesn't exist, run Python to generate it
+if [ ! -f "$cache_file" ]; then
+    /usr/bin/python3 /etc/nepali-date/cache_writer.py
+fi
+
+# Read first line (English date) and second line (Nepali date)
+read stored_date < "$cache_file"
+nepali_date=$(tail -n 1 "$cache_file")
+
+if [ "$stored_date" != "$today" ]; then
+    /usr/bin/python3 /etc/nepali-date/cache_writer.py
+    nepali_date=$(tail -n 1 "$cache_file")
+fi
+
+echo "आजको मिति: $nepali_date"

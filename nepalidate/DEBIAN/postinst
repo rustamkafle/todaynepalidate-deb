@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Ensure cache folder and initial cache file exist
+mkdir -p /etc/nepali-date
+touch /etc/nepali-date/today_date.txt
+
+# Fetch today's date during install (optional)
+if command -v python3 >/dev/null 2>&1; then
+    /usr/bin/python3 /etc/nepali-date/cache_writer.py
+fi
+
+chmod +x /usr/local/bin/miti

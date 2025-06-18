@@ -1,0 +1,8 @@
+Package: nepalidate
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Rustam 
+Depends: python3, python3-requests, python3-bs4
+Description: Show today's Nepali date (caching enabled)
